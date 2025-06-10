@@ -3,12 +3,12 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors'); 
 const contactos = require('./server');
-const Port = 5000
+const Port = 3005
 app.use(cors());
 app.use(bodyParser.json())
 
 app.get('/', (req,res)=>{
-    res.status(200).send({info: contactos})
+    res.send(contactos);
 })
 
 app.listen(Port, ()=>{
