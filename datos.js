@@ -1,16 +1,16 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
-const cors = require('cors'); 
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
 const contactos = require('./server');
-const Port = 3005
+const app = express();
+const Port = 3005;
+
 app.use(cors());
-app.use(bodyParser.json())
 
-app.get('/', (req,res)=>{
-    res.send(contactos);
-})
+app.get('/api', (req, res) => {
+  res.status(200).json({ info: contactos });
+});
 
-app.listen(Port, ()=>{
-    console.log(`servido escuchando en el puerto: ${Port}`)
-})
+app.listen(Port, () => {
+  console.log(`Servidor escuchando en el puerto: ${Port}`);
+});
